@@ -64,33 +64,55 @@ async function searchImages(){
 
     const results = data.results;
 
+    //results is the data we are getting from the website whcih we now need to get showed on our website in an dynamic way
+
     console.log(results)
-    //this accesess the data property in the object and gives us acess to that 
+    //this accesess the data property in the object and gives us its values, these are the values we need to change our elements to in html
    
 
     
     if(page === 1){
         searchResults.innerHTML = "";
     }   
+    //not that big of a deal 
     //this removes all the preEmtered html in so that we can push new stuff into it 
     //if dont put this in everything will still work but the initial tempelates will not be removed and neww stuff will be pushed after it: but will be pushed
 
+    //".map" is a way to transform each element of an array
+ 
         results.map((result) => {
+        
+            //results is the data array wwe got back from the api -- and contains all the data to which we need to apend our html
+            //  "RESULT"   its just a reptresentation of each data point that are present in the array results
+
+            //first we have got nothing to do with the HTML - we are just playing with the results that have came back from the api
+            //and putting these results into out Variables
+
+
             const imageWrapper = document.createElement("div");
             imageWrapper.classList.add("search-result");
-            
+            //we create a new constat and name it imageWrapper  - JS
+            //create a new div inside of it
+            //add a class to it which would makeit look just like template we had initally on our website - contains all the css 
+
+
             const image = document.createElement("img");
             image.src = result.urls.small;
             image.alt = result.alt_description;
+            //we make a new const for the image and create an img element inside of it
+            //we put the source of this image equal to the "RESULT.URLS.SMALL" which is the location of the url of the image in the api data
+
 
             const imageLink = document.createElement("a");
             imageLink.href = result.links.html;
             imageLink.target = "_blank";
             imageLink.textContent = result.alt_description;
+            //siimilarly we create a "A" element and
 
             imageWrapper.appendChild(image);
             imageWrapper.appendChild(imageLink);
             searchResults.appendChild(imageWrapper);
+            //we need to append something that is dynamic i.e it is constantly changing - fetching data constantly also maeks something dynamic
         });
     
     page++;

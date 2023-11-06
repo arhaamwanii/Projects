@@ -107,27 +107,58 @@ async function searchImages(){
             imageLink.href = result.links.html;
             imageLink.target = "_blank";
             imageLink.textContent = result.alt_description;
-            //siimilarly we create a "A" element and
+            //siimilarly we create a "A" element and 
+            //make it open in a new tab by adding target "_blank"
+            //we make its text content equal to the text we got from the api
+
+
+            //append means adding something to the end of a written document
+            //we need to append something that is dynamic i.e it is constantly changing - fetching data constantly also maeks something dynamic
 
             imageWrapper.appendChild(image);
+            //we are adding the const image we created to the end of the image wrapper making 
+
             imageWrapper.appendChild(imageLink);
+            //we also add the imageLink(a attribute) to the imagewrapper
+
             searchResults.appendChild(imageWrapper);
-            //we need to append something that is dynamic i.e it is constantly changing - fetching data constantly also maeks something dynamic
+            //      "searchResult" is a element in the HTML which we have imported here in JS  
+            //we have removed everything that was present in the inner html earlier in this function, but we have done it dynamically not in the actuall solid html file so we can still edit it
+            //now we append(ADD) image wrapper which conatins the image and the anchor tag to the search results
+            
         });
     
     page++;
+    //as the page variable was created outside of the function and we are only calling the function again so it its numeber will increase by one rather than changing its back to the inital one as we are not revisiting the code
+    //what it will do is that it will fetch new "RESULT" for our "RESULTS" as it changes the page no in the API fetvh url as well
+
+    
+
+    //BY default show more button is hidden this makes the button visible once we call the function i.e style.display would be changed to block from hidden
     if(page > 1){
         showMore.style.display = "block"
     }
     }
    
 
-formE1.addEventListener("submit" , (event) => {
+//formE1 is the the representation of the form element - button + input together
+//we simply add event listner to it, for submit 
+//and then calls the function 
+//also resets the page var to one
+
+
+formE1.addEventListener("submit" , (event) => { //the event here represents the submit - we did it because we had to add the prevent default behaviour to it
     event.preventDefault()
+    //it prevents the default behaviour of the event/element in js
+
     page = 1;
     searchImages()
 });
 
+
+
 showMore.addEventListener("click", () => {
     searchImages()
 });
+
+//simply if someone clicks on show more call the function search imges i.e add a 

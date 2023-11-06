@@ -23,27 +23,54 @@ console.log(searchResults)
 const showMore = document.getElementById("show-more-button")
 //we selected it it using the ID because it gives us this specific element only
 
-let inputData = ""
+
+
+
+
+// let inputData = ""
 let page = 1;
+//we define this variable outside of the function becauase if would have did it inside the function it would change it back to 1/defined value whenever we try to call the function
+//it will be used in the api url to ask for new pictures avery time, as it is going to add one/change the page keyword everytime we try to fetch the data new data every time
+
+
+
 
 async function searchImages(){
+    //made a syncronus function to use await and to run the code in background
+
     inputData = inputE1.value;
 
+    //this gives us the value that is in the input bar when we call the function
+    //if we just change the value of the, input in the bar and press show more it will show the next card according to the new text in the search 
     console.log(inputData);
+    //this will simply log the value that is in the input bar at the time the function is called
+
 
     const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
 
+    //page determines the differnce in the output
+    //inputData -  detemines what to bring the data about
+    //acccessKey - it is the unique key that diffenrentate the users
+
     console.log(url)
 
+
     const response = await fetch(url);
+    //gives back a JSON 
     const data = await response.json();
     console.log(data);
+    //it converts the javascritpt object notation into simple notation which is accessable in the js
+
 
     const results = data.results;
+    //this accesess the data property in the object and gives us acess to that 
    
+
+
     if(page === 1){
         searchResults.innerHTML = "";
     }   
+    
         results.map((result) => {
             const imageWrapper = document.createElement("div");
             imageWrapper.classList.add("search-result");

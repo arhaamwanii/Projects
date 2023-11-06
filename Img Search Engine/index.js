@@ -36,6 +36,7 @@ let page = 1;
 
 
 async function searchImages(){
+    
     //made a syncronus function to use await and to run the code in background
 
     inputData = inputE1.value;
@@ -61,16 +62,19 @@ async function searchImages(){
     console.log(data);
     //it converts the javascritpt object notation into simple notation which is accessable in the js
 
-
     const results = data.results;
+
+    console.log(results)
     //this accesess the data property in the object and gives us acess to that 
    
 
-
+    
     if(page === 1){
         searchResults.innerHTML = "";
     }   
-    
+    //this removes all the preEmtered html in so that we can push new stuff into it 
+    //if dont put this in everything will still work but the initial tempelates will not be removed and neww stuff will be pushed after it: but will be pushed
+
         results.map((result) => {
             const imageWrapper = document.createElement("div");
             imageWrapper.classList.add("search-result");

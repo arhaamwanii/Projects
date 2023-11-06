@@ -2,15 +2,8 @@ const accessKey = "WMN6wPpKvOHWK1L8xkgoGn3rwJ6pSza8t5S1FQv3Gbs";
 //got an api access key from uplansh which is stored in variable accessKey
 
 const formE1 =  document.querySelector("form")
-//input bar and and button inside the html are linked together in the html using the form element 
-//this gives us the compete html from the form element and stores that in formE1
-
-    console.log(formE1)
-
-const inputE1 = document.getElementById("search-input");
-console.log(inputE1)
-//for now we dont know what this
-
+//
+const inputE1 = document.getElementById("search-input")
 
 const searchResults = document.querySelector(".search-results")
 const showMore = document.getElementById("show-more-button")
@@ -20,9 +13,6 @@ let page = 1;
 
 async function searchImages(){
     inputData = inputE1.value;
-
-    console.log(inputData);
-
     const url = `https://api.unsplash.com/search/photos?page=${page}&query=${inputData}&client_id=${accessKey}`;
 
 

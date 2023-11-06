@@ -161,4 +161,4 @@ showMore.addEventListener("click", () => {
     searchImages()
 });
 
-//simply if someone clicks on show more call the function search imges i.e add a 
+//simply if someone clicks on show more call the function search imges i.e add a page 
